@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>zrk-common</module>
+        <module>zrk-spring-boot-starter-rpc</module>
     </modules>
 
     <artifactId>zrk-framework</artifactId>
