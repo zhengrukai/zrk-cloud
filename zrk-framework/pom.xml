@@ -10,6 +10,8 @@
     <modules>
         <module>zrk-common</module>
         <module>zrk-spring-boot-starter-rpc</module>
+        <module>zrk-spring-boot-starter-job</module>
+        <module>zrk-spring-boot-starter-env</module>
     </modules>
 
     <artifactId>zrk-framework</artifactId>

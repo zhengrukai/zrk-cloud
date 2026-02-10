@@ -21,18 +21,24 @@ import static java.util.Arrays.asList;
  */
 public class CollectionUtils {
 
+    // 检查源对象是否与目标对象数组中的任意一个对象相等
     public static boolean containsAny(Object source, Object... targets) {
         return asList(targets).contains(source);
     }
 
+    // 检查传入的一个或多个集合是否为空。
     public static boolean isAnyEmpty(Collection<?>... collections) {
+        // 使用 Stream API 遍历所有集合，检查是否存在空集合
         return Arrays.stream(collections).anyMatch(CollectionUtil::isEmpty);
     }
 
+    // 检查集合中是否存在至少一个元素满足给定的谓词条件。
     public static <T> boolean anyMatch(Collection<T> from, Predicate<T> predicate) {
+        // 使用 Stream API 的 anyMatch 方法检查是否存在满足条件的元素
         return from.stream().anyMatch(predicate);
     }
 
+    // 根据给定的谓词条件过滤集合中的元素，并返回过滤后的结果集合
     public static <T> List<T> filterList(Collection<T> from, Predicate<T> predicate) {
         if (CollUtil.isEmpty(from)) {
             return new ArrayList<>();
@@ -40,6 +46,7 @@ public class CollectionUtils {
         return from.stream().filter(predicate).collect(Collectors.toList());
     }
 
+    // 根据给定的键映射函数对集合中的元素进行去重，并返回去重后的结果集合
     public static <T, R> List<T> distinct(Collection<T> from, Function<T, R> keyMapper) {
         if (CollUtil.isEmpty(from)) {
             return new ArrayList<>();
@@ -47,6 +54,7 @@ public class CollectionUtils {
         return distinct(from, keyMapper, (t1, t2) -> t1);
     }
 
+    // 根据给定的键映射函数和合并函数对集合中的元素进行去重，并返回去重后的结果集合
     public static <T, R> List<T> distinct(Collection<T> from, Function<T, R> keyMapper, BinaryOperator<T> cover) {
         if (CollUtil.isEmpty(from)) {
             return new ArrayList<>();
@@ -78,6 +86,7 @@ public class CollectionUtils {
         return from.stream().filter(filter).map(func).filter(Objects::nonNull).collect(Collectors.toList());
     }
 
+
     public static <T, U> PageResult<U> convertPage(PageResult<T> from, Function<T, U> func) {
         if (ArrayUtil.isEmpty(from)) {
             return new PageResult<>(from.getTotal());
@@ -85,11 +94,13 @@ public class CollectionUtils {
         return new PageResult<>(convertList(from.getList(), func), from.getTotal());
     }
 
+    // 转换 扁平化映射
     public static <T, U> List<U> convertListByFlatMap(Collection<T> from,
                                                       Function<T, ? extends Stream<? extends U>> func) {
         if (CollUtil.isEmpty(from)) {
             return new ArrayList<>();
         }
+        // 对输入集合进行流式处理：过滤空元素 -> 扁平化映射 -> 过滤空元素 ->
         return from.stream().filter(Objects::nonNull).flatMap(func).filter(Objects::nonNull).collect(Collectors.toList());
     }
 

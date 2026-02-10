@@ -1,0 +1,2 @@
+cn.zrkcoder.cloud.framework.redis.config.ZrkRedisAutoConfiguration
+cn.zrkcoder.cloud.framework.redis.config.ZrkCacheAutoConfiguration
