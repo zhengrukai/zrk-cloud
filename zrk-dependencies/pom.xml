@@ -146,7 +146,11 @@
             </dependency>
 
             <!-- Web 相关 -->
-
+            <dependency>
+                <groupId>cn.zrkcoder.cloud</groupId>
+                <artifactId>zrk-spring-boot-starter-web</artifactId>
+                <version>${revision}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
@@ -302,6 +306,11 @@
             </dependency>
 
             <!-- 监控相关 -->
+            <dependency>
+                <groupId>cn.zrkcoder.cloud</groupId>
+                <artifactId>zrk-spring-boot-starter-monitor</artifactId>
+                <version>${revision}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.apache.skywalking</groupId>
@@ -356,12 +365,7 @@
             </dependency>
 
             <!-- Test 测试相关 -->
-            <dependency>
-                <groupId>cn.iocoder.cloud</groupId>
-                <artifactId>yudao-spring-boot-starter-test</artifactId>
-                <version>${revision}</version>
-                <scope>test</scope>
-            </dependency>
+
 
             <dependency>
                 <groupId>org.mockito</groupId>

@@ -12,6 +12,8 @@
         <module>zrk-spring-boot-starter-rpc</module>
         <module>zrk-spring-boot-starter-job</module>
         <module>zrk-spring-boot-starter-env</module>
+        <module>zrk-spring-boot-starter-monitor</module>
+        <module>zrk-spring-boot-starter-web</module>
     </modules>
 
     <artifactId>zrk-framework</artifactId>

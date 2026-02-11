@@ -75,7 +75,7 @@ public class ServletUtils {
         return JakartaServletUtil.getClientIP(request);
     }
 
-    //
+    // 检查请求是否为 JSON 类型（基于 Content-Type 头）。
     public static boolean isJsonRequest(ServletRequest request) {
         return StrUtil.startWithIgnoreCase(request.getContentType(), MediaType.APPLICATION_JSON_VALUE);
     }
@@ -88,10 +88,11 @@ public class ServletUtils {
         return null;
     }
 
+    // 获取请求体的字节数组
     public static byte[] getBodyBytes(HttpServletRequest request) {
         // 只有在 json 请求在读取，因为只有 CacheRequestBodyFilter 才会进行缓存，支持重复读取
         if (isJsonRequest(request)) {
-            return JakartaServletUtil.getBodyBytes(request);
+            return JakartaServletUtil.getBodyBytes(request); // 获取请求体的字节数组
         }
         return null;
     }

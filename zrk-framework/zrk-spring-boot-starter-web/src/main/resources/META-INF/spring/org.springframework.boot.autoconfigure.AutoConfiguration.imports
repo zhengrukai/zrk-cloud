@@ -1,0 +1,8 @@
+cn.zrkcoder.cloud.framework.web.config.ZrkWebAutoConfiguration
+cn.zrkcoder.cloud.framework.apilog.config.ZrkApiLogAutoConfiguration
+cn.zrkcoder.cloud.framework.apilog.config.ZrkApiLogRpcAutoConfiguration
+cn.zrkcoder.cloud.framework.jackson.config.ZrkJacksonAutoConfiguration
+cn.zrkcoder.cloud.framework.swagger.config.ZrkSwaggerAutoConfiguration
+cn.zrkcoder.cloud.framework.xss.config.ZrkXssAutoConfiguration
+cn.zrkcoder.cloud.framework.banner.config.ZrkBannerAutoConfiguration
+cn.zrkcoder.cloud.framework.encrypt.config.ZrkApiEncryptAutoConfiguration
