@@ -11,6 +11,10 @@ import java.util.Set;
  */
 public class SetUtils {
 
+    /**
+     * 封装 Set 集合并返回，用于快速创建
+     * 去重
+     */
     @SafeVarargs
     public static <T> Set<T> asSet(T... objs) {
         return CollUtil.newHashSet(objs);
