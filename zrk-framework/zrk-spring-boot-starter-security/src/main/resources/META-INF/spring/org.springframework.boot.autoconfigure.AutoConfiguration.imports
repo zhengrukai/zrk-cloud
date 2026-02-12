@@ -1,0 +1,5 @@
+cn.zrkcoder.cloud.framework.security.config.ZrkSecurityRpcAutoConfiguration
+cn.zrkcoder.cloud.framework.security.config.ZrkSecurityRpcAutoConfiguration
+cn.zrkcoder.cloud.framework.security.config.ZrkWebSecurityConfigurerAdapter
+cn.zrkcoder.cloud.framework.operatelog.config.ZrkOperateLogConfiguration
+cn.zrkcoder.cloud.framework.operatelog.config.ZrkOperateLogRpcAutoConfiguration
