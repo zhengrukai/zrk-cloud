@@ -1,0 +1,3 @@
+cn.zrkcoder.cloud.framework.mq.redis.config.ZrkRedisMQProducerAutoConfiguration
+cn.zrkcoder.cloud.framework.mq.redis.config.ZrkRedisMQConsumerAutoConfiguration
+cn.zrkcoder.cloud.framework.mq.rabbitmq.config.ZrkRabbitMQAutoConfiguration
