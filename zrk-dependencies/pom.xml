@@ -181,6 +181,11 @@
             </dependency>
 
             <!-- DB 相关 -->
+            <dependency>
+                <groupId>cn.zrkcoder.cloud</groupId>
+                <artifactId>zrk-spring-boot-starter-mybatis</artifactId>
+                <version>${revision}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -400,7 +405,12 @@
             </dependency>
 
             <!-- Test 测试相关 -->
-
+            <dependency>
+                <groupId>cn.zrkcoder.cloud</groupId>
+                <artifactId>zrk-spring-boot-starter-test</artifactId>
+                <version>${revision}</version>
+                <scope>test</scope>
+            </dependency>
 
             <dependency>
                 <groupId>org.mockito</groupId>
