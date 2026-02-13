@@ -97,6 +97,7 @@ public enum DbTypeEnum {
         return MAP_BY_NAME.get(databaseProductName).getMpDbType();
     }
 
+    // 获取 FIND_IN_SET 模板
     public static String getFindInSetTemplate(DbType dbType) {
         return Optional.of(MAP_BY_MP.get(dbType).getFindInSetTemplate())
                 .orElseThrow(() -> new IllegalArgumentException("FIND_IN_SET not supported"));
