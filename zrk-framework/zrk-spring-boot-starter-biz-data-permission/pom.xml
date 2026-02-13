@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cn.zrkcoder.cloud</groupId>
+    <artifactId>zrk-framework</artifactId>
+    <version>${revision}</version>
+  </parent>
+
+  <artifactId>zrk-spring-boot-starter-biz-data-permission</artifactId>
+  <packaging>jar</packaging>
+
+  <name>${project.artifactId}</name>
+  <description>数据权限</description>
+  <url>https://github.com/zhengrukai/zrk-cloud</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>cn.zrkcoder.cloud</groupId>
+      <artifactId>zrk-common</artifactId>
+    </dependency>
+
+    <!-- Web 相关 -->
+    <dependency>
+      <groupId>cn.zrkcoder.cloud</groupId>
+      <artifactId>zrk-spring-boot-starter-security</artifactId>
+      <optional>true</optional> <!-- 可选，如果使用 DeptDataPermissionRule 必须提供 -->
+    </dependency>
+
+    <!-- DB 相关 -->
+    <dependency>
+      <groupId>cn.zrkcoder.cloud</groupId>
+      <artifactId>zrk-spring-boot-starter-mybatis</artifactId>
+    </dependency>
+
+    <!-- RPC 远程调用相关 -->
+    <dependency>
+      <groupId>cn.zrkcoder.cloud</groupId>
+      <artifactId>zrk-spring-boot-starter-rpc</artifactId>
+    </dependency>
+
+    <!-- Test 测试相关 -->
+    <dependency>
+      <groupId>cn.zrkcoder.cloud</groupId>
+      <artifactId>zrk-spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
