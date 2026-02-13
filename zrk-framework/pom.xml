@@ -19,6 +19,7 @@
         <module>zrk-spring-boot-starter-mybatis</module>
         <module>zrk-spring-boot-starter-test</module>
         <module>zrk-spring-boot-starter-biz-data-permission</module>
+        <module>zrk-spring-boot-starter-biz-ip</module>
     </modules>
 
     <artifactId>zrk-framework</artifactId>

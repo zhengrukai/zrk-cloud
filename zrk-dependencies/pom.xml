@@ -129,6 +129,16 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+            <dependency>
+                <groupId>cn.zrkcoder.cloud</groupId>
+                <artifactId>zrk-spring-boot-starter-biz-data-permission</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.zrkcoder.cloud</groupId>
+                <artifactId>zrk-spring-boot-starter-biz-ip</artifactId>
+                <version>${revision}</version>
+            </dependency>
 
 
             <!-- Spring 核心 -->

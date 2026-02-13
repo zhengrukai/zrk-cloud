@@ -284,10 +284,12 @@ public class CollectionUtils {
         return !CollectionUtil.isEmpty(from) ? from.get(0) : null;
     }
 
+    // 根据谓语过滤并返回第一个
     public static <T> T findFirst(Collection<T> from, Predicate<T> predicate) {
         return findFirst(from, predicate, Function.identity());
     }
 
+    // 根据谓语过滤并返回第一个，且用函数映射
     public static <T, U> U findFirst(Collection<T> from, Predicate<T> predicate, Function<T, U> func) {
         if (CollUtil.isEmpty(from)) {
             return null;
