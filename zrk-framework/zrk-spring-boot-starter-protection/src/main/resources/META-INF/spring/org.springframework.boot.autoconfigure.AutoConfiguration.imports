@@ -1,0 +1,4 @@
+cn.zrkcoder.cloud.framework.idempotent.config.ZrkIdempotentConfiguration
+cn.zrkcoder.cloud.framework.lock4j.config.ZrkLock4jConfiguration
+cn.zrkcoder.cloud.framework.ratelimiter.config.ZrkRateLimiterConfiguration
+cn.zrkcoder.cloud.framework.signature.config.ZrkApiSignatureAutoConfiguration

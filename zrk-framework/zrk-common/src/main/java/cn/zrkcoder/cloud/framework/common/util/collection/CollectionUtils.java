@@ -162,6 +162,7 @@ public class CollectionUtils {
         return from.stream().map(mapper).filter(Objects::nonNull).flatMap(func).filter(Objects::nonNull).collect(Collectors.toSet());
     }
 
+    // 将集合转换为Map，通过指定的键函数生成键。
     public static <T, K> Map<K, T> convertMap(Collection<T> from, Function<T, K> keyFunc) {
         if (CollUtil.isEmpty(from)) {
             return new HashMap<>();
@@ -176,6 +177,7 @@ public class CollectionUtils {
         return convertMap(from, keyFunc, Function.identity(), supplier);
     }
 
+    // 将集合转换为Map，通过指定的键函数生成键, 通过指定的值函数生成值。
     public static <T, K, V> Map<K, V> convertMap(Collection<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc) {
         if (CollUtil.isEmpty(from)) {
             return new HashMap<>();
@@ -183,6 +185,7 @@ public class CollectionUtils {
         return convertMap(from, keyFunc, valueFunc, (v1, v2) -> v1);
     }
 
+    // 将集合转换为Map，通过指定的键函数生成键, 通过指定的值函数生成值，键冲突时的合并策略。
     public static <T, K, V> Map<K, V> convertMap(Collection<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc, BinaryOperator<V> mergeFunction) {
         if (CollUtil.isEmpty(from)) {
             return new HashMap<>();
@@ -197,6 +200,19 @@ public class CollectionUtils {
         return convertMap(from, keyFunc, valueFunc, (v1, v2) -> v1, supplier);
     }
 
+    /**
+     * 将集合转换为Map，支持自定义键、值的映射函数以及合并策略和Map实现。
+     *
+     * @param <T> 集合元素类型
+     * @param <K> Map的键类型
+     * @param <V> Map的值类型
+     * @param from 输入的集合
+     * @param keyFunc 用于生成Map键的函数
+     * @param valueFunc 用于生成Map值的函数
+     * @param mergeFunction 当键冲突时的合并策略
+     * @param supplier 用于创建Map实例的供应器
+     * @return 转换后的Map
+     */
     public static <T, K, V> Map<K, V> convertMap(Collection<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc, BinaryOperator<V> mergeFunction, Supplier<? extends Map<K, V>> supplier) {
         if (CollUtil.isEmpty(from)) {
             return new HashMap<>();

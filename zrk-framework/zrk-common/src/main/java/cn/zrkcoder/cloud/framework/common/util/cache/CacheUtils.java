@@ -36,13 +36,23 @@ public class CacheUtils {
     public static <K, V> LoadingCache<K, V> buildAsyncReloadingCache(Duration duration, CacheLoader<K, V> loader) {
         return CacheBuilder.newBuilder()
                 .maximumSize(CACHE_MAX_SIZE)
-                // 不是 “过期删除”，而是 “刷新触发”：
-                //1. 缓存写入后，超过 duration 时间，下次访问该 key 时触发刷新；
-                //2. 刷新时，仅当前请求线程会等待（或异步执行），其他线程仍返回旧值，保证高可用
+                // 核心特性1: 智能刷新触发：不是 “过期删除”，而是 “刷新触发”
+                /*
+                 * 工作原理:
+                 * 1. 缓存写入后开始计时
+                 * 2. 超过duration时间后，标记为"需要刷新"
+                 * 3. 下次访问该key时才真正触发刷新操作
+                 * 4. 刷新期间其他线程仍可获取旧值，保证高可用
+                 */
                 .refreshAfterWrite(duration)
-                // 把同步的CacheLoader包装为异步执行：
-                //1. 缓存加载 / 刷新逻辑在独立线程池执行，业务线程不阻塞；
-                //2. 这是 “全异步” 的核心，区别于普通的refreshAfterWrite（默认同步加载）
+                // 核心特性2: 异步执行
+                /*
+                 * 工作原理:
+                 * 1. 将同步的CacheLoader包装为异步版本
+                 * 2. 缓存加载 / 刷新逻辑操作在独立线程池执行
+                 * 3. 业务线程不会被阻塞
+                 * 4. 实现真正的"读写分离"
+                 */
                 .build(CacheLoader.asyncReloading(loader, Executors.newCachedThreadPool())); // TODO 可能要思考下，未来要不要做成可配置
     }
 

@@ -10,7 +10,7 @@
     <modules>
         <module>zrk-dependencies</module>
         <module>zrk-framework</module>
-        <module>zrk-framework/zrk-spring-boot-starter-redis</module>
+        <module>zrk-module-infra</module>
     </modules>
 
     <name>${project.artifactId}</name>

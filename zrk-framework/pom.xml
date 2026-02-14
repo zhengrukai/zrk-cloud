@@ -10,6 +10,7 @@
     <modules>
         <module>zrk-common</module>
         <module>zrk-spring-boot-starter-rpc</module>
+        <module>zrk-spring-boot-starter-redis</module>
         <module>zrk-spring-boot-starter-job</module>
         <module>zrk-spring-boot-starter-env</module>
         <module>zrk-spring-boot-starter-monitor</module>
@@ -20,6 +21,10 @@
         <module>zrk-spring-boot-starter-test</module>
         <module>zrk-spring-boot-starter-biz-data-permission</module>
         <module>zrk-spring-boot-starter-biz-ip</module>
+        <module>zrk-spring-boot-starter-biz-tenant</module>
+        <module>zrk-spring-boot-starter-protection</module>
+        <module>zrk-spring-boot-starter-excel</module>
+        <module>zrk-spring-boot-starter-websocket</module>
     </modules>
 
     <artifactId>zrk-framework</artifactId>

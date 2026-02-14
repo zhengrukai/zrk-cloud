@@ -139,6 +139,11 @@
                 <artifactId>zrk-spring-boot-starter-biz-ip</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.zrkcoder.cloud</groupId>
+                <artifactId>zrk-spring-boot-starter-biz-tenant</artifactId>
+                <version>${revision}</version>
+            </dependency>
 
 
             <!-- Spring 核心 -->
@@ -165,6 +170,12 @@
             <dependency>
                 <groupId>cn.zrkcoder.cloud</groupId>
                 <artifactId>zrk-spring-boot-starter-security</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.zrkcoder.cloud</groupId>
+                <artifactId>zrk-spring-boot-starter-websocket</artifactId>
                 <version>${revision}</version>
             </dependency>
 
@@ -342,6 +353,11 @@
             </dependency>
 
             <!-- 服务保障相关 -->
+            <dependency>
+                <groupId>cn.zrkcoder.cloud</groupId>
+                <artifactId>zrk-spring-boot-starter-protection</artifactId>
+                <version>${revision}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.baomidou</groupId>
@@ -474,6 +490,13 @@
                 <artifactId>zrk-common</artifactId>
                 <version>${revision}</version>
             </dependency>
+
+            <dependency>
+                <groupId>cn.zrkcoder.cloud</groupId>
+                <artifactId>zrk-spring-boot-starter-excel</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
