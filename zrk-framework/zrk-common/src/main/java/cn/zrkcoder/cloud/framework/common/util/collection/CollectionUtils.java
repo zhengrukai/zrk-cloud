@@ -124,6 +124,7 @@ public class CollectionUtils {
         return convertSet(from, v -> v);
     }
 
+    // 把集合转换成 不重复的 Set, 且根据 func 条件映射
     public static <T, U> Set<U> convertSet(Collection<T> from, Function<T, U> func) {
         if (CollUtil.isEmpty(from)) {
             return new HashSet<>();

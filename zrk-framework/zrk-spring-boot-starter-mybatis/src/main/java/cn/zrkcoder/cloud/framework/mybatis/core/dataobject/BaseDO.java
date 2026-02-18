@@ -25,13 +25,13 @@ public abstract class BaseDO implements Serializable, TransPojo {
     /**
      * 创建时间
      */
-    @TableField(fill = FieldFill.INSERT)
+    @TableField(fill = FieldFill.INSERT) // 字段填充注解，创建时填充
     private LocalDateTime createTime;
 
     /**
      * 最后更新时间
      */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
+    @TableField(fill = FieldFill.INSERT_UPDATE) // 字段填充注解，创建或更新时填充
     private LocalDateTime updateTime;
 
     /**
@@ -51,7 +51,7 @@ public abstract class BaseDO implements Serializable, TransPojo {
     /**
      * 是否删除
      */
-    @TableLogic
+    @TableLogic // 逻辑删除注解
     private Boolean deleted;
 
     /**

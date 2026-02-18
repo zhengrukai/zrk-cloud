@@ -3,6 +3,7 @@ package cn.zrkcoder.cloud.framework.tenant.core.job;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.zrkcoder.cloud.framework.common.util.json.JsonUtils;
 import cn.zrkcoder.cloud.framework.tenant.core.service.TenantFrameworkService;
 import cn.zrkcoder.cloud.framework.tenant.core.util.TenantUtils;
 import com.xxl.job.core.context.XxlJobContext;

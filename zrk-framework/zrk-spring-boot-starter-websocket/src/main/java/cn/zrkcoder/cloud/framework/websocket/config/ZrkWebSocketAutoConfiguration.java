@@ -123,7 +123,7 @@ public class ZrkWebSocketAutoConfiguration {
         @Bean
         public RocketMQWebSocketMessageSender rocketMQWebSocketMessageSender(
                 WebSocketSessionManager sessionManager, RocketMQTemplate rocketMQTemplate,
-                @Value("${yudao.websocket.sender-rocketmq.topic}") String topic) {
+                @Value("${zrk.websocket.sender-rocketmq.topic}") String topic) {
             return new RocketMQWebSocketMessageSender(sessionManager, rocketMQTemplate, topic);
         }
 
@@ -172,7 +172,7 @@ public class ZrkWebSocketAutoConfiguration {
         @Bean
         public KafkaWebSocketMessageSender kafkaWebSocketMessageSender(
                 WebSocketSessionManager sessionManager, KafkaTemplate<Object, Object> kafkaTemplate,
-                @Value("${yudao.websocket.sender-kafka.topic}") String topic) {
+                @Value("${zrk.websocket.sender-kafka.topic}") String topic) {
             return new KafkaWebSocketMessageSender(sessionManager, kafkaTemplate, topic);
         }
 

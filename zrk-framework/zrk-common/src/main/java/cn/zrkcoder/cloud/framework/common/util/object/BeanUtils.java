@@ -16,6 +16,7 @@ import java.util.function.Consumer;
  */
 public class BeanUtils {
 
+    // 对象转换 将 source 对象转换为目标类型 targetClass 的实例
     public static <T> T toBean(Object source, Class<T> targetClass) {
         return BeanUtil.toBean(source, targetClass);
     }
@@ -28,6 +29,7 @@ public class BeanUtils {
         return target;
     }
 
+    // 批量对象转换 将 source 对象转换为目标类型 targetClass 的实例
     public static <S, T> List<T> toBean(List<S> source, Class<T> targetType) {
         if (source == null) {
             return null;
