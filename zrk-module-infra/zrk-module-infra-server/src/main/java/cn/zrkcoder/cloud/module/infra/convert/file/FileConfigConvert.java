@@ -2,8 +2,10 @@ package cn.zrkcoder.cloud.module.infra.convert.file;
 
 import cn.zrkcoder.cloud.module.infra.controller.admin.file.vo.config.FileConfigSaveReqVO;
 import cn.zrkcoder.cloud.module.infra.dal.dataobject.file.FileConfigDO;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -17,6 +19,7 @@ public interface FileConfigConvert {
     FileConfigConvert INSTANCE = Mappers.getMapper(FileConfigConvert.class);
 
     @Mapping(target = "config", ignore = true)
+    @BeanMapping(unmappedTargetPolicy = ReportingPolicy.IGNORE)
     FileConfigDO convert(FileConfigSaveReqVO bean);
 
 }

@@ -11,6 +11,9 @@
         <module>zrk-dependencies</module>
         <module>zrk-framework</module>
         <module>zrk-module-infra</module>
+        <module>zrk-module-system</module>
+        <module>zrk-server</module>
+        <module>zrk-gateway</module>
     </modules>
 
     <name>${project.artifactId}</name>

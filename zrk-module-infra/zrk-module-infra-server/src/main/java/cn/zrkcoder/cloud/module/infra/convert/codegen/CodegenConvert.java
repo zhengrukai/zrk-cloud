@@ -11,10 +11,7 @@ import cn.zrkcoder.cloud.module.infra.dal.dataobject.codegen.CodegenTableDO;
 import com.baomidou.mybatisplus.generator.config.po.TableField;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import org.apache.ibatis.type.JdbcType;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
-import org.mapstruct.Named;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -34,6 +31,7 @@ public interface CodegenConvert {
             @Mapping(source = "name", target = "tableName"),
             @Mapping(source = "comment", target = "tableComment"),
     })
+    @BeanMapping(unmappedTargetPolicy = ReportingPolicy.IGNORE)
     CodegenTableDO convert(TableInfo bean);
 
     List<CodegenColumnDO> convertList(List<TableField> list);
@@ -47,6 +45,7 @@ public interface CodegenConvert {
             @Mapping(source = "columnType.type", target = "javaType"),
             @Mapping(source = "propertyName", target = "javaField"),
     })
+    @BeanMapping(unmappedTargetPolicy = ReportingPolicy.IGNORE)
     CodegenColumnDO convert(TableField bean);
 
     @Named("getDataType")

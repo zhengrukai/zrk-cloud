@@ -1,0 +1,38 @@
+package cn.zrkcoder.cloud.module.infra.api.websocket;
+
+import cn.hutool.core.util.StrUtil;
+import cn.zrkcoder.cloud.framework.common.pojo.CommonResult;
+import cn.zrkcoder.cloud.framework.websocket.core.sender.WebSocketMessageSender;
+import cn.zrkcoder.cloud.module.infra.api.websocket.dto.WebSocketSendReqDTO;
+import jakarta.annotation.Resource;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RestController;
+
+import static cn.zrkcoder.cloud.framework.common.pojo.CommonResult.success;
+
+/**
+ * @author zrk on 2026/2/19
+ */
+@RestController // 提供 RESTful API 接口，给 Feign 调用
+@Validated
+public class WebSocketSenderApiImpl implements WebSocketSenderApi {
+
+    @Resource
+    private WebSocketMessageSender webSocketMessageSender;
+
+    @Override
+    public CommonResult<Boolean> send(WebSocketSendReqDTO message) {
+        if (StrUtil.isNotEmpty(message.getSessionId())) {
+            webSocketMessageSender.send(message.getSessionId(),
+                    message.getMessageType(), message.getMessageContent());
+        } else if (message.getUserType() != null && message.getUserId() != null) {
+            webSocketMessageSender.send(message.getUserType(), message.getUserId(),
+                    message.getMessageType(), message.getMessageContent());
+        } else if (message.getUserType() != null) {
+            webSocketMessageSender.send(message.getUserType(),
+                    message.getMessageType(), message.getMessageContent());
+        }
+        return success(true);
+    }
+
+}
