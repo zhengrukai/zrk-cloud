@@ -30,7 +30,7 @@ public class ConfigSaveReqVO {
     @ExcelProperty("参数名称")
     private String name;
 
-    @Schema(description = "参数键名", requiredMode = Schema.RequiredMode.REQUIRED, example = "yunai.db.username")
+    @Schema(description = "参数键名", requiredMode = Schema.RequiredMode.REQUIRED, example = "zrk.db.username")
     @ExcelProperty("参数键名")
     private String key;
 
