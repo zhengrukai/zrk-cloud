@@ -26,7 +26,13 @@ import cn.zrkcoder.cloud.module.ai.enums.model.AiPlatformEnum;
 import cn.zrkcoder.cloud.module.ai.framework.ai.core.websearch.AiWebSearchClient;
 import cn.zrkcoder.cloud.module.ai.framework.ai.core.websearch.AiWebSearchRequest;
 import cn.zrkcoder.cloud.module.ai.framework.ai.core.websearch.AiWebSearchResponse;
+import cn.zrkcoder.cloud.module.ai.service.knowledge.AiKnowledgeDocumentService;
+import cn.zrkcoder.cloud.module.ai.service.knowledge.AiKnowledgeSegmentService;
+import cn.zrkcoder.cloud.module.ai.service.knowledge.bo.AiKnowledgeSegmentSearchReqBO;
+import cn.zrkcoder.cloud.module.ai.service.knowledge.bo.AiKnowledgeSegmentSearchRespBO;
+import cn.zrkcoder.cloud.module.ai.service.model.AiChatRoleService;
 import cn.zrkcoder.cloud.module.ai.service.model.AiModelService;
+import cn.zrkcoder.cloud.module.ai.service.model.AiToolService;
 import cn.zrkcoder.cloud.module.ai.util.AiUtils;
 import cn.zrkcoder.cloud.module.ai.util.FileTypeUtils;
 import com.google.common.collect.Maps;
@@ -58,6 +64,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 import static cn.zrkcoder.cloud.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.zrkcoder.cloud.framework.common.pojo.CommonResult.error;
 import static cn.zrkcoder.cloud.framework.common.pojo.CommonResult.success;
 import static cn.zrkcoder.cloud.framework.common.util.collection.CollectionUtils.convertList;
 import static cn.zrkcoder.cloud.framework.common.util.collection.CollectionUtils.convertSet;
@@ -333,7 +340,7 @@ public class AiChatMessageServiceImpl implements AiChatMessageService {
             if (attachmentUserMessage != null) {
                 chatMessages.add(attachmentUserMessage);
             }
-            // TODO @芋艿：历史的知识库；历史的搜索，要不要拼接？
+            // TODO 历史的知识库；历史的搜索，要不要拼接？
         });
 
         // 1.3 当前 user message 新发送消息

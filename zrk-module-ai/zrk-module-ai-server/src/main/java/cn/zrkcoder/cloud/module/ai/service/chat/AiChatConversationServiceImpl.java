@@ -14,6 +14,8 @@ import cn.zrkcoder.cloud.module.ai.dal.dataobject.model.AiChatRoleDO;
 import cn.zrkcoder.cloud.module.ai.dal.dataobject.model.AiModelDO;
 import cn.zrkcoder.cloud.module.ai.dal.mysql.chat.AiChatConversationMapper;
 import cn.zrkcoder.cloud.module.ai.enums.model.AiModelTypeEnum;
+import cn.zrkcoder.cloud.module.ai.service.knowledge.AiKnowledgeService;
+import cn.zrkcoder.cloud.module.ai.service.model.AiChatRoleService;
 import cn.zrkcoder.cloud.module.ai.service.model.AiModelService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
