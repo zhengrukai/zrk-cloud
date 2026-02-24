@@ -137,6 +137,7 @@ public class AiChatMessageServiceImpl implements AiChatMessageService {
     @Resource
     private ToolCallbackResolver toolCallbackResolver;
 
+    @Override
     @Transactional(rollbackFor = Exception.class)
     public AiChatMessageSendRespVO sendMessage(AiChatMessageSendReqVO sendReqVO, Long userId) {
         // 1.1 校验对话存在

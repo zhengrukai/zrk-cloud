@@ -148,6 +148,7 @@ public class AiChatConversationServiceImpl implements AiChatConversationService{
         throw exception(CHAT_CONVERSATION_MODEL_ERROR);
     }
 
+    @Override
     public AiChatConversationDO validateChatConversationExists(Long id) {
         AiChatConversationDO conversation = chatConversationMapper.selectById(id);
         if (conversation == null) {

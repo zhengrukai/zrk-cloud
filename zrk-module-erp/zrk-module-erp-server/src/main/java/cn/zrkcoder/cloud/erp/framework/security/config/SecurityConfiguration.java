@@ -1,5 +1,6 @@
 package cn.zrkcoder.cloud.erp.framework.security.config;
 
+import cn.zrkcoder.cloud.framework.security.config.AuthorizeRequestsCustomizer;
 import cn.zrkcoder.cloud.module.erp.enums.ApiConstants;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
