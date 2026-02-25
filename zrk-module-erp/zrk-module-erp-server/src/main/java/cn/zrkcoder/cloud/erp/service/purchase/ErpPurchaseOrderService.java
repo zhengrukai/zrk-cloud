@@ -1,7 +1,7 @@
 package cn.zrkcoder.cloud.erp.service.purchase;
 
-import cn.zrkcoder.cloud.erp.controller.purchase.vo.order.ErpPurchaseOrderPageReqVO;
-import cn.zrkcoder.cloud.erp.controller.purchase.vo.order.ErpPurchaseOrderSaveReqVO;
+import cn.zrkcoder.cloud.erp.controller.admin.purchase.vo.order.ErpPurchaseOrderPageReqVO;
+import cn.zrkcoder.cloud.erp.controller.admin.purchase.vo.order.ErpPurchaseOrderSaveReqVO;
 import cn.zrkcoder.cloud.erp.dal.dataobject.purchase.ErpPurchaseOrderDO;
 import cn.zrkcoder.cloud.erp.dal.dataobject.purchase.ErpPurchaseOrderItemDO;
 import cn.zrkcoder.cloud.framework.common.pojo.PageResult;

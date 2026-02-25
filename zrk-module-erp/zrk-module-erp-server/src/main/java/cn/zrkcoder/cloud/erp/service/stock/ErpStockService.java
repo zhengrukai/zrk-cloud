@@ -1,6 +1,6 @@
 package cn.zrkcoder.cloud.erp.service.stock;
 
-import cn.zrkcoder.cloud.erp.controller.stock.vo.stock.ErpStockPageReqVO;
+import cn.zrkcoder.cloud.erp.controller.admin.stock.vo.stock.ErpStockPageReqVO;
 import cn.zrkcoder.cloud.erp.dal.dataobject.stock.ErpStockDO;
 import cn.zrkcoder.cloud.framework.common.pojo.PageResult;
 

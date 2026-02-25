@@ -1,8 +1,8 @@
 package cn.zrkcoder.cloud.erp.service.product;
 
-import cn.zrkcoder.cloud.erp.controller.product.vo.product.ErpProductPageReqVO;
-import cn.zrkcoder.cloud.erp.controller.product.vo.product.ErpProductRespVO;
-import cn.zrkcoder.cloud.erp.controller.product.vo.product.ErpProductSaveReqVO;
+import cn.zrkcoder.cloud.erp.controller.admin.product.vo.product.ErpProductPageReqVO;
+import cn.zrkcoder.cloud.erp.controller.admin.product.vo.product.ErpProductRespVO;
+import cn.zrkcoder.cloud.erp.controller.admin.product.vo.product.ErpProductSaveReqVO;
 import cn.zrkcoder.cloud.erp.dal.dataobject.product.ErpProductDO;
 import cn.zrkcoder.cloud.framework.common.pojo.PageResult;
 import jakarta.validation.Valid;

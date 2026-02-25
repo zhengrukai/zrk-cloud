@@ -1,7 +1,7 @@
 package cn.zrkcoder.cloud.erp.service.purchase;
 
-import cn.zrkcoder.cloud.erp.controller.purchase.vo.supplier.ErpSupplierPageReqVO;
-import cn.zrkcoder.cloud.erp.controller.purchase.vo.supplier.ErpSupplierSaveReqVO;
+import cn.zrkcoder.cloud.erp.controller.admin.purchase.vo.supplier.ErpSupplierPageReqVO;
+import cn.zrkcoder.cloud.erp.controller.admin.purchase.vo.supplier.ErpSupplierSaveReqVO;
 import cn.zrkcoder.cloud.erp.dal.dataobject.purchase.ErpSupplierDO;
 import cn.zrkcoder.cloud.framework.common.pojo.PageResult;
 import jakarta.validation.Valid;
