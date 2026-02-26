@@ -23,7 +23,9 @@ import cn.zrkcoder.cloud.module.erp.service.stock.bo.ErpStockRecordCreateReqBO;
 import cn.zrkcoder.cloud.module.system.api.user.AdminUserApi;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -40,6 +42,8 @@ import static cn.zrkcoder.cloud.module.erp.enums.ErrorCodeConstants.*;
  *
  * @author zrk on 2026/2/25
  */
+@Service
+@Validated
 public class ErpPurchaseInServiceImpl implements ErpPurchaseInService {
 
     @Resource

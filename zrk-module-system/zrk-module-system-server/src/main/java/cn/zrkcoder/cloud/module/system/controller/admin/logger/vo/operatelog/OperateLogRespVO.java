@@ -3,6 +3,7 @@ package cn.zrkcoder.cloud.module.system.controller.admin.logger.vo.operatelog;
 import cn.idev.excel.annotation.ExcelIgnoreUnannotated;
 import cn.idev.excel.annotation.ExcelProperty;
 import cn.zrkcoder.cloud.framework.excel.core.annotaions.DictFormat;
+import cn.zrkcoder.cloud.framework.excel.core.convert.DictConvert;
 import cn.zrkcoder.cloud.module.system.dal.dataobject.user.AdminUserDO;
 import cn.zrkcoder.cloud.module.system.enums.DictTypeConstants;
 import com.fhs.core.trans.anno.Trans;
@@ -37,7 +38,7 @@ public class OperateLogRespVO implements VO {
     private String userName;
 
     @Schema(description = "用户类型", requiredMode = Schema.RequiredMode.REQUIRED, example = "1", implementation = Integer.class)
-    @ExcelProperty("用户类型")
+    @ExcelProperty(value = "用户类型", converter = DictConvert.class)
     @DictFormat(DictTypeConstants.USER_TYPE)
     private Integer userType;
 

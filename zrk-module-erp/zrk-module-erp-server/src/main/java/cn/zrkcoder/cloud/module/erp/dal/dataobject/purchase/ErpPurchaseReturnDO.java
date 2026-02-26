@@ -94,7 +94,6 @@ public class ErpPurchaseReturnDO extends BaseDO {
     private BigDecimal discountPercent;
     /**
      * 优惠金额，单位：元
-     *
      * discountPrice = (totalProductPrice + totalTaxPrice) * discountPercent
      */
     private BigDecimal discountPrice;

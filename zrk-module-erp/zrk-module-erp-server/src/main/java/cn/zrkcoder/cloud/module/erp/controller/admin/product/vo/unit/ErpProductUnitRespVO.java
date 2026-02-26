@@ -3,6 +3,7 @@ package cn.zrkcoder.cloud.module.erp.controller.admin.product.vo.unit;
 import cn.idev.excel.annotation.ExcelIgnoreUnannotated;
 import cn.idev.excel.annotation.ExcelProperty;
 import cn.zrkcoder.cloud.framework.excel.core.annotaions.DictFormat;
+import cn.zrkcoder.cloud.framework.excel.core.convert.DictConvert;
 import cn.zrkcoder.cloud.module.system.enums.DictTypeConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -26,7 +27,7 @@ public class ErpProductUnitRespVO {
     private String name;
 
     @Schema(description = "单位状态", requiredMode = Schema.RequiredMode.REQUIRED, example = "1")
-    @ExcelProperty("单位状态")
+    @ExcelProperty(value = "单位状态", converter = DictConvert.class)
     @DictFormat(DictTypeConstants.COMMON_STATUS)
     private Integer status;
 
