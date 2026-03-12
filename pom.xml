@@ -16,6 +16,7 @@
         <module>zrk-gateway</module>
         <module>zrk-module-ai</module>
         <module>zrk-module-erp</module>
+        <module>zrk-learning</module>
     </modules>
 
     <name>${project.artifactId}</name>

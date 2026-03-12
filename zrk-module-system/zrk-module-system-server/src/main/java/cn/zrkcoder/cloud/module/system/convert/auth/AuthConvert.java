@@ -14,7 +14,10 @@ import cn.zrkcoder.cloud.module.system.dal.dataobject.permission.MenuDO;
 import cn.zrkcoder.cloud.module.system.dal.dataobject.permission.RoleDO;
 import cn.zrkcoder.cloud.module.system.dal.dataobject.user.AdminUserDO;
 import cn.zrkcoder.cloud.module.system.enums.permission.MenuTypeEnum;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 import org.slf4j.LoggerFactory;
 
@@ -82,8 +85,10 @@ public interface AuthConvert {
         return filterList(treeNodeMap.values(), node -> ID_ROOT.equals(node.getParentId()));
     }
 
+    @BeanMapping(unmappedTargetPolicy = ReportingPolicy.IGNORE)
     SocialUserBindReqDTO convert(Long userId, Integer userType, AuthSocialLoginReqVO reqVO);
 
+    @BeanMapping(unmappedTargetPolicy = ReportingPolicy.IGNORE)
     SmsCodeSendReqDTO convert(AuthSmsSendReqVO reqVO);
 
     SmsCodeUseReqDTO convert(AuthSmsLoginReqVO reqVO, Integer scene, String usedIp);
