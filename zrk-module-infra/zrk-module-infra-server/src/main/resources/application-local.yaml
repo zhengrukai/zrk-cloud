@@ -45,14 +45,19 @@ spring:
         initial-size: 1 # 初始连接数
         min-idle: 1 # 最小连接池数量
         max-active: 20 # 最大连接池数量
-        max-wait: 60000 # 配置获取连接等待超时的时间，单位：毫秒（1 分钟）
+        max-wait: 3000 # 配置获取连接等待超时的时间，单位：毫秒（30s）
+        connect-timeout: 3000     # 建立 TCP 连接超时（3秒）
+        socket-timeout: 5000      # SQL 执行 socket 读写超时（5秒，避免19秒长阻塞）
         time-between-eviction-runs-millis: 60000 # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位：毫秒（1 分钟）
         min-evictable-idle-time-millis: 600000 # 配置一个连接在池中最小生存的时间，单位：毫秒（10 分钟）
         max-evictable-idle-time-millis: 1800000 # 配置一个连接在池中最大生存的时间，单位：毫秒（30 分钟）
         validation-query: SELECT 1 FROM DUAL # 配置检测连接是否有效
-        test-while-idle: true
-        test-on-borrow: false
-        test-on-return: false
+        validation-query-timeout: 1 # 检测 SQL 超时时间（1秒）
+        keep-alive: true           # 【核心】开启 Druid 的保活功能，维持外网 TCP 会话不被断开
+        phy-timeout-millis: 900000 # 【核心】物理连接超时时间（15分钟，强制重建，避免死连接）
+        test-while-idle: true # 空闲时检测连接有效性（必开）
+        test-on-borrow: false # 借出连接时不检测（性能考虑，靠保活兜底）
+        test-on-return: false # 归还连接时不检测
         pool-prepared-statements: true # 是否开启 PreparedStatement 缓存
         max-pool-prepared-statement-per-connection-size: 20 # 每个连接缓存的 PreparedStatement 数量
       primary: master
@@ -72,7 +77,7 @@ spring:
         #          password: SYSDBA # DM 连接的示例
         slave: # 模拟从库，可根据自己需要修改
           lazy: true # 开启懒加载，保证启动速度
-          url: jdbc:mysql://127.0.0.1:3306/zrk-cloud?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true&rewriteBatchedStatements=true
+          url: jdbc:mysql://118.31.77.172:33060/zrk-cloud?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true&rewriteBatchedStatements=true
           username: local
           password: local-all-docker
 
