@@ -1,5 +1,6 @@
 package cn.zrkcoder.cloud.module.infra.framework.monitor.config;
 
+import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import jakarta.servlet.DispatcherType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -25,7 +26,7 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
  * @author zrk on 2026/2/18
  */
 @Configuration(proxyBeanMethods = false)
-//@EnableAdminServer
+@EnableAdminServer
 @ConditionalOnClass(name = "de.codecentric.boot.admin.server.config.AdminServerProperties") // 目的：按需启动 spring boot admin 监控服务
 public class AdminServerConfiguration {
 

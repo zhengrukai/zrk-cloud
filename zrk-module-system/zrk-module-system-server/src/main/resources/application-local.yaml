@@ -55,6 +55,11 @@ spring:
         test-on-return: false
         pool-prepared-statements: true # 是否开启 PreparedStatement 缓存
         max-pool-prepared-statement-per-connection-size: 20 # 每个连接缓存的 PreparedStatement 数量
+        # 超过 3 分钟未归还的连接强制回收
+        remove-abandoned: true
+        remove-abandoned-timeout: 180
+        # 将回收动作记录到日志，这样你就能在控制台看到是哪行代码触发的泄露
+        log-abandoned: true
       primary: master
       datasource:
         master:

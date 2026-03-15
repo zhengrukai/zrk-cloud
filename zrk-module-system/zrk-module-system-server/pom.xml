@@ -118,6 +118,11 @@
             <artifactId>zrk-spring-boot-starter-monitor</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId> <!-- 实现 Spring Boot Admin Server 服务端 -->
+        </dependency>
+
         <!-- 三方云服务相关 -->
         <dependency>
             <groupId>me.zhyd.oauth</groupId>
