@@ -1,4 +1,3 @@
 cn.zrkcoder.cloud.framework.datasource.config.ZrkDataSourceAutoConfiguration
-cn.zrkcoder.cloud.framework.mybatis.config.IdTypeEnvironmentPostProcessor
 cn.zrkcoder.cloud.framework.mybatis.config.ZrkMybatisAutoConfiguration
 cn.zrkcoder.cloud.framework.translate.config.ZrkTranslateAutoConfiguration

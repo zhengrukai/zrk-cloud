@@ -1,3 +1,2 @@
-cn.zrkcoder.cloud.framework.tenant.core.mq.kafka.TenantKafkaEnvironmentPostProcessor
 cn.zrkcoder.cloud.framework.tenant.config.ZrkTenantRpcAutoConfiguration
 cn.zrkcoder.cloud.framework.tenant.config.ZrkTenantAutoConfiguration

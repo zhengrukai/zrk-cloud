@@ -50,6 +50,7 @@ public class IdTypeEnvironmentPostProcessor implements EnvironmentPostProcessor 
             return;
         }
         // 情况一，用户输入 ID，适合 Oracle、PostgreSQL、Kingbase、DB2、H2 数据库
+
         if (INPUT_ID_TYPES.contains(dbType)) {
             setIdType(environment, IdType.INPUT);
             return;
@@ -84,7 +85,8 @@ public class IdTypeEnvironmentPostProcessor implements EnvironmentPostProcessor 
         Map<String, Object> map = new HashMap<>();
         map.put(ID_TYPE_KEY, idType);
         environment.getPropertySources().addFirst(new MapPropertySource("mybatisPlusIdType", map));
-        log.info("[setIdType][修改 MyBatis Plus 的 idType 为({})]", idType);
+        // 日志系统还没有初始化
+        System.out.println("[setIdType][修改 MyBatis Plus 的 idType 为(" + idType + ")]");
     }
 
     /**
