@@ -22,6 +22,7 @@ import org.springframework.validation.annotation.Validated;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static cn.zrkcoder.cloud.framework.common.exception.util.ServiceExceptionUtil.exception;
 import static cn.zrkcoder.cloud.framework.common.util.collection.CollectionUtils.convertSet;
@@ -149,7 +150,7 @@ public class SocialUserServiceImpl implements SocialUserService {
         }
         socialUser.setType(socialType).setCode(code).setState(state) // 需要保存 code + state 字段，保证后续可查询
                 .setOpenid(authUser.getUuid()).setToken(authUser.getToken().getAccessToken()).setRawTokenInfo((toJsonString(authUser.getToken())))
-                .setNickname(authUser.getNickname()).setAvatar(authUser.getAvatar()).setRawUserInfo(toJsonString(authUser.getRawUserInfo()));
+                .setNickname(Optional.ofNullable(authUser.getNickname()).orElse(authUser.getUsername())).setAvatar(authUser.getAvatar()).setRawUserInfo(toJsonString(authUser.getRawUserInfo()));
         if (socialUser.getId() == null) {
             socialUserMapper.insert(socialUser);
         } else {

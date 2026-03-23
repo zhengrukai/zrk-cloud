@@ -194,13 +194,17 @@ justauth:
   enabled: true
   type:
     DINGTALK: # 钉钉
-      client-id:
-      client-secret:
+      client-id: dinggqipgaqqcdtcnntp
+      client-secret: x7Vb7196I4hb_wk5ljil5LTLvq9pC9CkqYK3g_6HfnFPirsDT9eLsArqPYDtmFyb
       ignore-check-redirect-uri: true
     WECHAT_ENTERPRISE: # 企业微信
-      client-id:
-      client-secret:
-      agent-id:
+      client-id: ww8ed615a254630c20
+      client-secret: Ry8LN-uRX7cYiCvE--ouiVCs4FBMVMGdoQrYHRSxZBA
+      agent-id: 1000002
+      ignore-check-redirect-uri: true
+    GITHUB: # GitHub
+      client-id: Ov23li1Q0u7Q4chBJlIt
+      client-secret: 7a79c1c8906163f9cf303f734fe0e5a6759dcc49
       ignore-check-redirect-uri: true
     # noinspection SpringBootApplicationYaml
     WECHAT_MINI_PROGRAM: # 微信小程序

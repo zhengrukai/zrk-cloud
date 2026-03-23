@@ -54,11 +54,19 @@ public enum SocialTypeEnum implements ArrayValuable<Integer> {
      */
     WECHAT_MINI_PROGRAM(34, "WECHAT_MINI_PROGRAM"),
     /**
+     * QQ
+     */
+    QQ(35, "QQ"),
+    /**
      * 支付宝小程序
      *
      * @see <a href="https://opendocs.alipay.com/mini/05dxgc?pathHash=1a3ecb13">接入文档</a>
      */
     ALIPAY_MINI_PROGRAM(40, "ALIPAY"),
+    /**
+     * Github
+     */
+    GITHUB(50, "GITHUB"),
     ;
 
     public static final Integer[] ARRAYS = Arrays.stream(values()).map(SocialTypeEnum::getType).toArray(Integer[]::new);
