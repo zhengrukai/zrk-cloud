@@ -206,6 +206,10 @@ justauth:
       client-id: Ov23li1Q0u7Q4chBJlIt
       client-secret: 7a79c1c8906163f9cf303f734fe0e5a6759dcc49
       ignore-check-redirect-uri: true
+    QQ:
+      client-id: 1903676996
+      client-secret: RmtlOr54oIXigQyK
+      ignore-check-redirect-uri: true
     # noinspection SpringBootApplicationYaml
     WECHAT_MINI_PROGRAM: # 微信小程序
       client-id: ${wx.miniapp.appid}
