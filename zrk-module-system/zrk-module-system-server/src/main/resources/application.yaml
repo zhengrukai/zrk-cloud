@@ -124,7 +124,7 @@ xxl:
     executor:
       appname: ${spring.application.name} # 执行器 AppName
       logpath: ${user.home}/logs/xxl-job/${spring.application.name} # 执行器运行日志文件存储磁盘路径
-    accessToken: default_token # 执行器通讯TOKEN
+    accessToken: zrk20260327h8888888888888888888888888 # 执行器通讯TOKEN
 
 --- #################### 验证码相关配置 ####################
 

@@ -109,7 +109,7 @@ spring:
 
 xxl:
   job:
-    enabled: false # 是否开启调度中心，默认为 true 开启
+    enabled: true # 是否开启调度中心，默认为 true 开启
     admin:
       addresses: http://127.0.0.1:8081/xxl-job-admin # 调度中心部署跟地址
 
