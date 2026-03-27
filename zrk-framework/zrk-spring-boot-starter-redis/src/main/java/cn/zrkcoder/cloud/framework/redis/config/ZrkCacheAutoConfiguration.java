@@ -89,7 +89,7 @@ public class ZrkCacheAutoConfiguration {
         RedisConnectionFactory connectionFactory = Objects.requireNonNull(redisTemplate.getConnectionFactory());
         RedisCacheWriter cacheWriter = RedisCacheWriter.nonLockingRedisCacheWriter(connectionFactory,
                 BatchStrategies.scan(zrkCacheProperties.getRedisScanBatchSize()));
-        // 创建 TenantRedisCacheManager 对象
+        // 创建 TimeoutRedisCacheManager 对象
         return new TimeoutRedisCacheManager(cacheWriter, redisCacheConfiguration);
     }
 }
