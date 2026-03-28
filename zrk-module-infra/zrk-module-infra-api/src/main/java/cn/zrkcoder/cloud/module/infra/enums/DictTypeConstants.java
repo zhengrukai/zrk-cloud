@@ -9,8 +9,7 @@ public interface DictTypeConstants {
 
     String USER_TYPE = "user_type"; // 用户类型
 
-    String JOB_STATUS = "infra_job_status"; // 定时任务状态的枚举
-    String JOB_LOG_STATUS = "infra_job_log_status"; // 定时任务日志状态的枚举
+    String USER_SEX = "system_user_sex"; // 用户性别
 
     String API_ERROR_LOG_PROCESS_STATUS = "infra_api_error_log_process_status"; // API 错误日志的处理状态的枚举
 

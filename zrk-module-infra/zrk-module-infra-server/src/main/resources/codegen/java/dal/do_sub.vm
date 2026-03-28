@@ -4,12 +4,18 @@ package ${basePackage}.module.${subTable.moduleName}.dal.dataobject.${subTable.b
 
 import lombok.*;
 import java.util.*;
-#foreach ($column in $subColumns)
+## 处理 BigDecimal 字段的引入
+#foreach ($column in $columns)
 #if (${column.javaType} == "BigDecimal")
 import java.math.BigDecimal;
+#break
 #end
+#end
+## 处理 LocalDateTime 字段的引入
+#foreach ($column in $columns)
 #if (${column.javaType} == "LocalDateTime")
 import java.time.LocalDateTime;
+#break
 #end
 #end
 import com.baomidou.mybatisplus.annotation.*;
