@@ -128,7 +128,7 @@ xxl:
     executor:
       appname: ${spring.application.name} # 执行器 AppName
       logpath: ${user.home}/logs/xxl-job/${spring.application.name} # 执行器运行日志文件存储磁盘路径
-    accessToken: default_token # 执行器通讯TOKEN
+    accessToken: zrk20260327h8888888888888888888888888 # 执行器通讯TOKEN
 
 --- #################### zrk相关配置 ####################
 
@@ -138,7 +138,7 @@ zrk:
     base-package: cn.zrkcoder.cloud.module.infra
   web:
     admin-ui:
-      url:  # Admin 管理后台 UI 的地址
+      url: http://dashboard.cloud.zrkcoder.cn # Admin 管理后台 UI 的地址
   xss:
     enable: false
     exclude-urls: # 如下两个 url，仅仅是为了演示，去掉配置也没关系

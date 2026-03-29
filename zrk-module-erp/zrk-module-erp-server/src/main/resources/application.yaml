@@ -36,7 +36,7 @@ spring:
       time-to-live: 1h # 设置过期时间为 1 小时
 
 server:
-  port: 48088
+  port: 48083
 
 logging:
   file:
@@ -55,6 +55,10 @@ springdoc:
 
 knife4j:
   enable: true
+  basic:
+    enable: true
+    username: zrk
+    password: Aa65602842
   setting:
     language: zh_cn
 
@@ -98,7 +102,7 @@ xxl:
     executor:
       appname: ${spring.application.name} # 执行器 AppName
       logpath: ${user.home}/logs/xxl-job/${spring.application.name} # 执行器运行日志文件存储磁盘路径
-    accessToken: default_token # 执行器通讯TOKEN
+    accessToken: zrk20260327h8888888888888888888888888 # 执行器通讯TOKEN
 
 --- #################### zrk相关配置 ####################
 
