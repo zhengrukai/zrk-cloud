@@ -44,6 +44,7 @@
         <!-- 监控相关 -->
         <skywalking.version>9.5.0</skywalking.version>
         <spring-boot-admin.version>3.5.6</spring-boot-admin.version>
+        <spring-boot-starter-actuator.version>3.5.7</spring-boot-starter-actuator.version>
         <opentracing.version>0.33.0</opentracing.version>
         <!-- Test 测试相关 -->
         <podam.version>8.0.2.RELEASE</podam.version>
@@ -428,6 +429,11 @@
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-client</artifactId> <!-- 实现 Spring Boot Admin Server 服务端 -->
                 <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>${spring-boot-starter-actuator.version}</version>
             </dependency>
 
             <!-- Test 测试相关 -->

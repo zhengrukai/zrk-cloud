@@ -39,6 +39,12 @@
             <artifactId>knife4j-gateway-spring-boot-starter</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springdoc</groupId> <!-- 接口文档：使用最新版本的 Swagger 模型 -->
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- RPC 远程调用相关 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -61,11 +67,6 @@
         <dependency>
             <groupId>cn.zrkcoder.cloud</groupId>
             <artifactId>zrk-spring-boot-starter-monitor</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-server</artifactId> <!-- 实现 Spring Boot Admin Server 服务端 -->
         </dependency>
 
         <!-- 工具类相关 -->
