@@ -26,7 +26,7 @@ public interface AiChatRoleService {
      * @param createReqVO 创建信息
      * @return 编号
      */
-    Long createChatRole(@Valid AiChatRoleSaveReqVO createReqVO);
+    Long createChatRole(@Valid AiChatRoleSaveReqVO createReqVO, Long userId);
 
     /**
      * 创建【我的】聊天角色

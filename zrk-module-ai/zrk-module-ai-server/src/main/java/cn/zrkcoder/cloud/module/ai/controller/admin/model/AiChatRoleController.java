@@ -90,7 +90,7 @@ public class AiChatRoleController {
     @Operation(summary = "创建聊天角色")
     @PreAuthorize("@ss.hasPermission('ai:chat-role:create')")
     public CommonResult<Long> createChatRole(@Valid @RequestBody AiChatRoleSaveReqVO createReqVO) {
-        return success(chatRoleService.createChatRole(createReqVO));
+        return success(chatRoleService.createChatRole(createReqVO, getLoginUserId()));
     }
 
     @PutMapping("/update")

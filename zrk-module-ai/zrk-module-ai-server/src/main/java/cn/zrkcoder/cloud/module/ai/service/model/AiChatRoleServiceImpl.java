@@ -42,14 +42,14 @@ public class AiChatRoleServiceImpl implements AiChatRoleService {
     private AiToolService toolService;
 
     @Override
-    public Long createChatRole(AiChatRoleSaveReqVO createReqVO) {
+    public Long createChatRole(AiChatRoleSaveReqVO createReqVO, Long userId) {
         // 校验文档
         validateDocuments(createReqVO.getKnowledgeIds());
         // 校验工具
         validateTools(createReqVO.getToolIds());
 
         // 保存角色
-        AiChatRoleDO chatRole = BeanUtils.toBean(createReqVO, AiChatRoleDO.class);
+        AiChatRoleDO chatRole = BeanUtils.toBean(createReqVO, AiChatRoleDO.class).setUserId(userId);
         chatRoleMapper.insert(chatRole);
         return chatRole.getId();
     }

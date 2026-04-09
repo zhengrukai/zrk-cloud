@@ -109,6 +109,11 @@
             <artifactId>zrk-spring-boot-starter-monitor</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
         <!-- Spring AI Model 模型接入 -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
