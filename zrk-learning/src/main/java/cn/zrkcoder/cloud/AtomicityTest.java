@@ -1,5 +1,7 @@
 package cn.zrkcoder.cloud;
 
+import java.util.LinkedList;
+
 /**
  * Hello world!
  *
@@ -9,6 +11,7 @@ public class AtomicityTest
     private static int count = 0;
 
     public static void main( String[] args ) throws InterruptedException {
+
         int size = 10;
         int times = 10000;
         Thread[] threads = new Thread[size];
