@@ -4,10 +4,7 @@ server:
 --- #################### 数据库相关配置 ####################
 spring:
   autoconfigure:
-    # noinspection SpringBootApplicationYaml
     exclude:
-      - org.springframework.ai.vectorstore.qdrant.autoconfigure.QdrantVectorStoreAutoConfiguration # 禁用 AI 模块的 Qdrant，手动创建
-      - org.springframework.ai.vectorstore.milvus.autoconfigure.MilvusVectorStoreAutoConfiguration # 禁用 AI 模块的 Milvus，手动创建
   # 数据源配置项
   datasource:
     druid: # Druid 【监控】相关的全局配置
@@ -17,8 +14,8 @@ spring:
         enabled: true
         allow: # 设置白名单，不填则允许所有访问
         url-pattern: /druid/*
-        login-username: # 控制台管理用户名和密码
-        login-password:
+        login-username: zrk # 控制台管理用户名和密码
+        login-password: Aa65602842
       filter:
         stat:
           enabled: true
@@ -33,11 +30,16 @@ spring:
         initial-size: 1 # 初始连接数
         min-idle: 1 # 最小连接池数量
         max-active: 20 # 最大连接池数量
-        max-wait: 60000 # 配置获取连接等待超时的时间，单位：毫秒（1 分钟）
+        max-wait: 3000 # 配置获取连接等待超时的时间，单位：毫秒
+        connect-timeout: 3000 # 建立 TCP 连接超时（3秒）
+        socket-timeout: 5000 # SQL 执行 socket 读写超时（5秒，避免19秒长阻塞）
         time-between-eviction-runs-millis: 60000 # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位：毫秒（1 分钟）
         min-evictable-idle-time-millis: 600000 # 配置一个连接在池中最小生存的时间，单位：毫秒（10 分钟）
         max-evictable-idle-time-millis: 1800000 # 配置一个连接在池中最大生存的时间，单位：毫秒（30 分钟）
         validation-query: SELECT 1 FROM DUAL # 配置检测连接是否有效
+        validation-query-timeout: 1 # 检测 SQL 超时时间（1秒）
+        keep-alive: true           # 【核心】开启 Druid 的保活功能，维持外网 TCP 会话不被断开
+        phy-timeout-millis: 900000 # 【核心】物理连接超时时间（15分钟，强制重建，避免死连接）
         test-while-idle: true
         test-on-borrow: false
         test-on-return: false
@@ -124,6 +126,7 @@ management:
       base-path: /actuator # Actuator 提供的 API 接口的根目录。默认为 /actuator
       exposure:
         include: '*' # 需要开放的端点。默认值只打开 health 和 info 两个端点。通过设置 * ，可以开放所有端点。
+        exclude: configprops
 
 # Spring Boot Admin 配置项
 spring:
@@ -134,8 +137,8 @@ spring:
         url: http://127.0.0.1:${server.port}/${spring.boot.admin.context-path} # 设置 Spring Boot Admin Server 地址
         instance:
           service-host-type: IP # 注册实例时，优先使用 IP [IP, HOST_NAME, CANONICAL_HOST_NAME]
-        username: admin
-        password: admin
+        username: zrk
+        password: Aa65602842
       # Spring Boot Admin Server 服务端的相关配置
       context-path: /admin # 配置 Spring
 
@@ -145,30 +148,16 @@ logging:
     name: ${user.home}/logs/${spring.application.name}.log # 日志文件名，全路径
   level:
     # 配置自己写的 MyBatis Mapper 打印日志
-    cn.zrkcoder.cloud.module.bpm.dal.mysql: debug
     cn.zrkcoder.cloud.module.infra.dal.mysql: debug
     cn.zrkcoder.cloud.module.infra.dal.mysql.logger.ApiErrorLogMapper: INFO # 配置 ApiErrorLogMapper 的日志级别为 info，避免和 GlobalExceptionHandler 重复打印
     cn.zrkcoder.cloud.module.infra.dal.mysql.job.JobLogMapper: INFO # 配置 JobLogMapper 的日志级别为 info
     cn.zrkcoder.cloud.module.infra.dal.mysql.file.FileConfigMapper: INFO # 配置 FileConfigMapper 的日志级别为 info
-    cn.zrkcoder.cloud.module.pay.dal.mysql: debug
-    cn.zrkcoder.cloud.module.pay.dal.mysql.notify.PayNotifyTaskMapper: INFO # 配置 PayNotifyTaskMapper 的日志级别为 info
     cn.zrkcoder.cloud.module.system.dal.mysql: debug
     cn.zrkcoder.cloud.module.system.dal.mysql.sms.SmsChannelMapper: INFO # 配置 SmsChannelMapper 的日志级别为 info
-    cn.zrkcoder.cloud.module.tool.dal.mysql: debug
-    cn.zrkcoder.cloud.module.member.dal.mysql: debug
-    cn.zrkcoder.cloud.module.trade.dal.mysql: debug
-    cn.zrkcoder.cloud.module.promotion.dal.mysql: debug
-    cn.zrkcoder.cloud.module.statistics.dal.mysql: debug
-    cn.zrkcoder.cloud.module.crm.dal.mysql: debug
-    cn.zrkcoder.cloud.module.erp.dal.mysql: debug
-    cn.zrkcoder.cloud.module.iot.dal.mysql: debug
-    cn.zrkcoder.cloud.module.iot.dal.tdengine: DEBUG
-    cn.zrkcoder.cloud.module.ai.dal.mysql: debug
     org.springframework.context.support.PostProcessorRegistrationDelegate: ERROR # TODO 先禁用，Spring Boot 3.X 存在部分错误的 WARN 提示
 
-debug: false
-
 --- #################### 微信公众号、小程序相关配置 ####################
+
 wx:
   mp: # 公众号配置（必填），参见 https://github.com/Wechat-Group/WxJava/blob/develop/spring-boot-starters/wx-java-mp-spring-boot-starter/README.md 文档
     app-id:
@@ -194,30 +183,39 @@ zrk:
     enable: false # 本地环境，暂时关闭图片验证码，方便登录等接口的测试；
   security:
     mock-enable: true
-  pay:
-    order-notify-url: http://yunai.natapp1.cc/admin-api/pay/notify/order # 支付渠道的【支付】回调地址
-    refund-notify-url: http://yunai.natapp1.cc/admin-api/pay/notify/refund # 支付渠道的【退款】回调地址
-    transfer-notify-url: http://yunai.natapp1.cc/admin-api/pay/notify/transfer # 支付渠道的【转账】回调地址
   access-log: # 访问日志的配置项
-    enable: false
-  demo: false # 关闭演示模式
+    enable: true
   wxa-code:
     env-version: develop # 小程序版本: 正式版为 "release"；体验版为 "trial"；开发版为 "develop"
   wxa-subscribe-message:
     miniprogram-state: developer # 跳转小程序类型：开发版为 “developer”；体验版为 “trial”为；正式版为 “formal”
-  tencent-lbs-key: TVDBZ-TDILD-4ON4B-PFDZA-RNLKH-VVF6E # QQ 地图的密钥 https://lbs.qq.com/service/staticV2/staticGuide/staticDoc
+  demo: false # 关闭演示模式
+  sms-code: # 短信验证码相关的配置项
+    expire-times: 10m
+    send-frequency: 1m
+    send-maximum-quantity-per-day: 10
+    begin-code: 100001 # 验证码最小值
+    end-code: 999999 # 验证码最大值
 
 justauth:
   enabled: true
   type:
     DINGTALK: # 钉钉
-      client-id:
-      client-secret:
+      client-id: dinggqipgaqqcdtcnntp
+      client-secret: x7Vb7196I4hb_wk5ljil5LTLvq9pC9CkqYK3g_6HfnFPirsDT9eLsArqPYDtmFyb
       ignore-check-redirect-uri: true
     WECHAT_ENTERPRISE: # 企业微信
-      client-id:
-      client-secret:
-      agent-id:
+      client-id: ww8ed615a254630c20
+      client-secret: Ry8LN-uRX7cYiCvE--ouiVCs4FBMVMGdoQrYHRSxZBA
+      agent-id: 1000002
+      ignore-check-redirect-uri: true
+    GITHUB: # GitHub
+      client-id: Ov23li1Q0u7Q4chBJlIt
+      client-secret: 7a79c1c8906163f9cf303f734fe0e5a6759dcc49
+      ignore-check-redirect-uri: true
+    QQ:
+      client-id: 1903676996
+      client-secret: RmtlOr54oIXigQyK
       ignore-check-redirect-uri: true
     # noinspection SpringBootApplicationYaml
     WECHAT_MINI_PROGRAM: # 微信小程序
@@ -240,7 +238,4 @@ justauth:
     prefix: 'social_auth_state:' # 缓存前缀，目前只对 Redis 缓存生效，默认 JUSTAUTH::STATE::
     timeout: 24h # 超时时长，目前只对 Redis 缓存生效，默认 3 分钟
 
---- #################### iot相关配置 TODO 【IOT】：再瞅瞅 ####################
-pf4j:
-#  pluginsDir: /tmp/
-  pluginsDir: ../plugins
+debug: false
