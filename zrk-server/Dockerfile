@@ -13,7 +13,7 @@ ENV TZ=Asia/Shanghai
 ENV JAVA_OPTS="-Xms512m -Xmx512m -Djava.security.egd=file:/dev/./urandom"
 
 ## 应用参数
-ENV ARGS=""
+ENV ARGS="--spring.profiles.active=prod"
 
 ## 暴露后端项目的 48080 端口
 EXPOSE 48080

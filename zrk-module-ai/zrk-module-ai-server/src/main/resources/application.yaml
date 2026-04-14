@@ -60,6 +60,10 @@ springdoc:
 
 knife4j:
   enable: true
+  basic:
+    enable: true
+    username: zrk
+    password: Aa65602842
   setting:
     language: zh_cn
 

@@ -74,3 +74,11 @@ functions/mock
 screenshot
 .firebase
 sessionStore
+
+# env / secrets
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key

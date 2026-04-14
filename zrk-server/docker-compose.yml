@@ -1,0 +1,29 @@
+version: '3.2'
+
+services:
+  zrk-server:
+    image: eclipse-temurin:21-jre
+    container_name: zrk-server
+    environment:
+      TZ: Asia/Shanghai
+      JAVA_OPTS: "-Xms512m -Xmx512m -Djava.security.egd=file:/dev/./urandom"
+    env_file:
+      - /var/www/zrk-cloud/env/.env.common.prod
+      - /var/www/zrk-cloud/env/.env.server.prod
+    volumes:
+      - /var/www/zrk-cloud/app/zrk-server.jar:/zrk-server/zrk-server.jar:ro
+      - /var/www/zrk-cloud/cert:/zrk-server/cert:ro
+    command: sh -c "java ${JAVA_OPTS} -jar /zrk-server/zrk-server.jar --spring.profiles.active=prod"
+    ports:
+      - "48080:48080"
+    networks:
+      - agent
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '200m'
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [ node.hostname == xhb-1001 ]
